@@ -5,11 +5,10 @@
 
    // Configure an instance for your database
    var td = new Treasure({
-   host: 'in.treasuredata.com',
-   writeKey: 'WRITE YOUR WRITE ONLY API KEY',
-   database: 'WRITE YOUR DB NAME',
- 
-   startInSignedMode: true
+    host: 'in.treasuredata.com',
+    writeKey: 'test_apikey',
+    database: 'test_db',
+    startInSignedMode: true
    });
   
    // Enable cross-domain tracking
@@ -19,9 +18,7 @@
    td.trackPageview('WRITE YOUR TABLE NAME');
   </script>
   
-  <!-- =======================================================
-  Start https://cookieconsent.insites.com/ tag
-  ======================================================= -->
+  <!-- Start https://cookieconsent.insites.com/ tag -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
   <script>
@@ -39,7 +36,7 @@
    "type": "opt-out",
    "revokable": true,
    onStatusChange: function(status) {
-    this.hasConsented() ? td.setSignedMode() : td.setAnonymousMode();
+     this.hasConsented() ? td.setSignedMode() : td.setAnonymousMode();
    },
   })
   });
