@@ -1,0 +1,52 @@
+<html>
+ <head>
+  <script>
+   !function(t,e){if(void 0===e[t]){e[t]=function(){e[t].clients.push(this),this._init=[Array.prototype.slice.call(arguments)]},e[t].clients=[];for(var r=function(t){return function(){return this["_"+t]=this["_"+t]||[],this["_"+t].push(Array.prototype.slice.call(arguments)),this}},s=["blockEvents","unblockEvents","setSignedMode","setAnonymousMode","resetUUID","addRecord","fetchGlobalID","set","trackEvent","trackPageview","trackClicks","ready"],n=0;n<s.length;n++){var c=s[n];e[t].prototype[c]=r(c)}var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.treasuredata.com/sdk/2.1/td.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)}}("Treasure",this);
+  
+   // Configure an instance for your database
+   var td = new Treasure({
+   host: 'in.treasuredata.com',
+   writeKey: 'WRITE YOUR WRITE ONLY API KEY',
+   database: 'WRITE YOUR DB NAME',
+ 
+   startInSignedMode: true
+   });
+  
+   // Enable cross-domain tracking
+   td.set('$global', 'td_global_id', 'td_global_id');
+  
+   // Track pageview information to a table
+   td.trackPageview('WRITE YOUR TABLE NAME');
+  </script>
+  
+  <!-- =======================================================
+  Start https://cookieconsent.insites.com/ tag
+  ======================================================= -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+  <script>
+   window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+     "palette": {
+     "popup": {
+     "background": "#3c404d",
+     "text": "#d6d6d6"
+    },
+    "button": {
+     "background": "#8bed4f"
+    }
+   },
+   "type": "opt-out",
+   "revokable": true,
+   onStatusChange: function(status) {
+    this.hasConsented() ? td.setSignedMode() : td.setAnonymousMode();
+   },
+  })
+  });
+  </script>
+ </head>
+<body>
+This is an example for concsensus management with JS SDK.
+Please refer to <a herf="https://support.treasuredata.com/hc/en-us/articles/360019560094">this article</a>.
+</body>
+</html> 
